@@ -1,0 +1,9 @@
+{
+    "name": "r3tr0ananas-pro",
+    "dependencies": {
+        "typescript": "5.2.2"
+    },
+    "devDependencies": {
+        "tailwindcss": "^3.4.1"
+    }
+}
