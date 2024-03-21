@@ -22,7 +22,7 @@ async def file(request: Request, file_id: str):
     if file_id in js:
         file_to_send = js[file_id]
 
-        uploads = await Path("./config", "files", file_to_send)
+        uploads = Path("./config", "files", file_to_send)
 
         return FileResponse(uploads, filename=file_to_send)
 

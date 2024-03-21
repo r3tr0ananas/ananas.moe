@@ -23,8 +23,8 @@ async def github(request: Request):
         "redirect.html", {
             "request": request,
             "title": "My GitHub",
-            "description": "Check out my open-source work at GitHub!",
-            "image_url": "https://avatars.githubusercontent.com/u/66202304",
+            "description": "Check out my GitHub",
+            "image_url": "https://avatars.githubusercontent.com/u/132799819",
             "url": "https://github.com/R3tr0Ananas"
         }
     )
