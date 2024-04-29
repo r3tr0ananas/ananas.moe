@@ -5,8 +5,8 @@ USER root
 WORKDIR /app
 
 COPY /app ./app
-COPY /web ./web
-COPY /templates ./templates
+COPY /static ./static
+COPY /temp ./temp
 COPY /config ./config
 
 COPY requirements.txt .
