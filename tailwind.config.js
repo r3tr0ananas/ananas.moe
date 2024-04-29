@@ -10,7 +10,8 @@ module.exports = {
         pineapple: {
           DEFAULT: "#ffcb00",
           100: "#ffde00",
-          400: "#ffcb00"
+          400: "#ffcb00",
+          800: "#cca300"
         },
         aGrey: {
           DEFAULT: "#505050",
@@ -26,6 +27,11 @@ module.exports = {
           800: "#0e1114"
         }
       },
-    },
-  }
+      screens: {
+        "mobile": {"max": "430px"},
+        "tablet": {"max": "850px"},
+        "desktop": {"max": "1280px"}
+      },
+    }
+  },
 }

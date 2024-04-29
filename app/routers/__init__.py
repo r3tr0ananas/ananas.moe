@@ -1,4 +1,4 @@
-from .files import r_files
-from .r import redirect
+from .files import files
+from .redirect import redirect
 
-routers = [r_files, redirect]
+routers = [files, redirect]

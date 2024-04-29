@@ -1,9 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
     body {
-        @apply bg-aDark-500 text-white font-montserrat;
+        @apply bg-aGrey-800 font-montserrat tracking-wide text-white;
+    }
+
+    h1, h2, h3, h4, h5, h6, p, li {
+        @apply font-medium;
+    }
+
+    strong {
+        @apply font-[900];
+    }
+
+    a {
+        @apply text-pineapple-100 transition duration-700 hover:text-pineapple-800
+    }
+
+    footer {
+        @apply text-sm
     }
 }

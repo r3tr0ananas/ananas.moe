@@ -9,13 +9,14 @@ from fastapi.templating import Jinja2Templates
 from ..config import Config
 from pathlib import Path
 
-__all__ = ("r_files", )
+__all__ = ("file", )
 
 templates = Jinja2Templates(directory = "./temp")
-config = Config()
-r_files = APIRouter()
 
-@r_files.get("/file/{file_id}")
+config = Config()
+files = APIRouter()
+
+@files.get("/file/{file_id}")
 async def file(request: Request, file_id: str):
     js = await config.get_files()
 

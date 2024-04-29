@@ -1,4 +1,9 @@
 {
-    "redirects": {},
-    "files": {}
+    "redirects": [],
+    "files": {},
+    "languages": [
+        {"language": "en", "label": "🇬🇧"}, 
+        {"language": "de", "label": "🇩🇪"}
+    ],
+    "default_language": "en"
 }

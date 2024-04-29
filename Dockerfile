@@ -19,6 +19,5 @@ RUN apt-get update && apt-get install -y make nodejs npm
 RUN make
 
 EXPOSE 8000
-ENV LISTEN_PORT = 8000
 
-CMD ["uvicorn", "app.main:app", "--host=0.0.0.0", "--proxy-headers"]
+CMD ["uvicorn", "app.main:app", "--proxy-headers", "--host", "0.0.0.0"]
