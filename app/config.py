@@ -37,16 +37,12 @@ class Config:
         config = await self.get_config()
 
         for config_language in config["languages"]:
-
-            print(config_language["language"] == lang, config_language["language"], lang)
             
             if config_language["language"] == lang:
                 
                 json_file = f"{lang}.json"
 
                 does_exist = self.lang_path.joinpath(json_file)
-
-                print(does_exist.absolute())
 
                 if does_exist.exists():
                     language = await self.__read_lang(json_file)

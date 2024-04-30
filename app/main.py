@@ -26,7 +26,6 @@ config = Config()
 today = date.today()
 year = today.year
 
-
 @app.get("/")
 async def index(request: Request, lang: str = "en"):
     language = await config.get_lang(lang)
@@ -42,7 +41,7 @@ async def index(request: Request, lang: str = "en"):
     )
 
     for config_language in live_config["languages"]:
-        config_language["selected"] = True if lang == config_language["language"] else False
+        config_language["selected"] = config_language["language"] == lang
         
         languages.append(config_language)
 
@@ -59,9 +58,5 @@ async def index(request: Request, lang: str = "en"):
         )
     
     return HTTPException(404)
-
-@app.get("/ip")
-async def ip(request: Request):
-    return PlainTextResponse(request.client.host)
 
 app.mount("/", StaticFiles(directory = "static"))

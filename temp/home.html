@@ -10,10 +10,7 @@
 
 
 {% block body %}
-<body class="m-0 mx-auto animate-unblur">
-    <script src="./scripts/home.js"></script>
-
-
+<body class="m-0 mx-auto">
     <div class="absolute mr-1 mt-3 right-0 top-0 text-center">
         <select class="py-3 px-4 pe-2 block w-full rounded-lg text-sm focus:border-blue-500 
         focus:ring-blue-500 bg-aGrey-800 border-aGrey-500 border-2" onchange="SelectionChange(value);">
@@ -75,15 +72,11 @@
         </a>
     </div>
 
-    
-    <div class="mt-5 bg-aDark-500 p-5 rounded-full mx-[20%] mobile:mx-auto">
-
-        <div class="grid grid-cols-1">
-            <div class="text-center">
-                <p>Coming Soon ™</p>
-            </div>
-        </div>
+    <div class="grid-cols-1 bg-aDark-500 rounded-3xl mt-5 mx-96 mobile:mx-auto">
+        <p class="text-center"> Coming Soon</p>
     </div>
+
+    <script src="./scripts/home.js"></script>
 
 </body>
 {% endblock %}
