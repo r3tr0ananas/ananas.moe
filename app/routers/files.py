@@ -18,7 +18,9 @@ files = APIRouter()
 
 @files.get("/file/{file_id}")
 async def file(request: Request, file_id: str):
-    js = await config.get_files()
+    live_config = await config.get_config()
+
+    js = live_config.get("files", {})
 
     if file_id in js:
         file_to_send = js[file_id]
