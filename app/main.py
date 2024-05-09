@@ -20,7 +20,7 @@ app = FastAPI(
 for router in routers:
     app.include_router(router)
 
-templates = Jinja2Templates(directory = "./temp")
+templates = Jinja2Templates(directory = "./templates")
 config = Config()
 
 today = date.today()

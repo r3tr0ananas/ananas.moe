@@ -1,10 +1,13 @@
-build: deps npm tw
+build: deps npm ts tw
 
 deps:
 	pip install -r requirements.txt
 
 npm:
 	npm i
+
+ts:
+	npx tsc ./static/scripts/*.ts --target ES2016
 
 tw:
 	npx tailwindcss -i ./static/input.css -o ./static/output.css
