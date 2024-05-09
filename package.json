@@ -2,7 +2,6 @@
     "name": "r3tr0ananas-pro",
     "dependencies": {
         "@tailwindcss/forms": "^0.5.7",
-        "tailwindcss": "^3.4.1",
-        "typescript": "^5.3.3"
+        "tailwindcss": "^3.4.1"
     }
 }
