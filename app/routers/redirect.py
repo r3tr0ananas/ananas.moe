@@ -15,7 +15,8 @@ __all__ = ("redirect", )
 
 config = Config()
 redirect = APIRouter()
-templates = Jinja2Templates(directory = "./temp")
+
+templates = Jinja2Templates(directory = "./templates")
 
 @redirect.get("/github")
 async def github(request: Request):

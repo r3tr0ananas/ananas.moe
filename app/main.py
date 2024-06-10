@@ -1,9 +1,7 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 from fastapi.requests import Request
-from fastapi.responses import PlainTextResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
-from datetime import date
 
 from .ctx import ContextBuild
 from .routers import routers
@@ -23,16 +21,8 @@ for router in routers:
 templates = Jinja2Templates(directory = "./templates")
 config = Config()
 
-today = date.today()
-year = today.year
-
 @app.get("/")
-async def index(request: Request, lang: str = "en"):
-    language = await config.get_lang(lang)
-    live_config = await config.get_config()
-
-    languages = []
-
+async def index(request: Request):
     context = ContextBuild(
         request = request,
         title = "Ananas - Home",
@@ -40,23 +30,10 @@ async def index(request: Request, lang: str = "en"):
         image_url = "https://avatars.githubusercontent.com/u/132799819"
     )
 
-    for config_language in live_config["languages"]:
-        config_language["selected"] = config_language["language"] == lang
-        
-        languages.append(config_language)
-
-    if language:
-        language["copyright"] = language["copyright"].format(year)
-
-        return templates.TemplateResponse(
-            "home.html", {
-                "lang": language,
-                "languages": languages,
-
-                **context.data
-            }
-        )
-    
-    return HTTPException(404)
+    return templates.TemplateResponse(
+        "home.html", {
+            **context.data
+        }
+    )
 
 app.mount("/", StaticFiles(directory = "static"))

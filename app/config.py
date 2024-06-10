@@ -21,32 +21,3 @@ class Config:
             file = json.loads(file)
 
         return file
-    
-    async def __read_lang(self, lang):
-        file = str(self.lang_path.joinpath(lang))
-
-        async with aiofiles.open(file, "r") as f:
-            file = await f.read()
-            await f.close()
-            
-            file = json.loads(file)
-
-        return file
-    
-    async def get_lang(self, lang: str):
-        config = await self.get_config()
-
-        for config_language in config["languages"]:
-            
-            if config_language["language"] == lang:
-                
-                json_file = f"{lang}.json"
-
-                does_exist = self.lang_path.joinpath(json_file)
-
-                if does_exist.exists():
-                    language = await self.__read_lang(json_file)
-
-                    return language
-
-        return None
