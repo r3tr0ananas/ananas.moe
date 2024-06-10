@@ -7,9 +7,9 @@ import os
 from app import __version__
 
 os.system(
-    f"docker build -t r3tr0ananas/r3tr0ananas_pro:{__version__} --build-arg ARCH=amd64 ."
+    f"docker build -t r3tr0ananas/ananas_moe:{__version__} --build-arg ARCH=amd64 ."
 )
 
 os.system(
-    "docker build -t r3tr0ananas/r3tr0ananas_pro:latest --build-arg ARCH=amd64 ."
+    "docker build -t r3tr0ananas/ananas_moe:latest --build-arg ARCH=amd64 ."
 )
