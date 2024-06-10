@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block head %}
+{{ super() }}
+
+<link rel="stylesheet" href="./output.css">
+
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+
+{% endblock %}
+
+
+{% block body %}
+<body class="mx-auto m-0">
+
+    <div class="max-w-full flex items-center justify-between mx-auto p-5">
+        
+        <div>
+
+            <select class="right-0 w-16 py-3 px-4 pe-2 block rounded-lg text-sm focus:border-blue-500 
+            focus:ring-blue-500 bg-aGrey-800 border-aGrey-500 border-2" onchange="SelectionChange(value);">
+                {% for lang in languages %}
+                    {% if lang.selected == true %}
+                        <option value="{{ lang.language }}" selected>
+                            {{ lang.label }}
+                        </option>
+    
+                    {% else %}
+                        <option value="{{ lang.language }}">
+                            {{ lang.label }}
+                        </option>
+    
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+
+    </div>
+    
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+        <div class="flex flex-col gap-5 text-center">
+            
+            <img src="https://avatars.githubusercontent.com/u/132799819?v=4" class="rounded-full w-[40%] mx-auto">
+
+            <p class="text-6xl mobile:text-3xl font-bold"> {{ lang.am }} </p>
+            <sub class="text-2xl mobile:text-lg font-medium"> {{ lang.ido }}  
+                <a href="/github">
+                    {{ lang.oss }}
+                </a> 
+            </sub>
+        </div>
+    </div>
+
+    <div class="absolute bottom-4 right-4">
+        <div class="flex items-center flex-col gap-3 text-center">
+
+            <span class="mobile:hidden">
+                <div class="[writing-mode:vertical-lr]"> {{ lang.follow }} </div>
+
+                <div class="h-12 w-px bg-white m-auto mb-4 mt-4"></div>
+            </span>
+
+            <a href="./github">
+                <i class='bx bxl-github bx-sm'></i>
+            </a>
+        
+            <a href="https://discord.com/users/695116877042679942">
+                <i class='bx bxl-discord-alt bx-sm'></i>
+            </a>
+        
+            <a href="https://youtube.com/@R3tr0AnanasDev">
+                <i class='bx bxl-youtube bx-sm'></i>
+            </a>
+
+            <a href="mailto:ananas@ananas.moe">
+                <i class='bx bxl-gmail bx-sm'></i>
+            </a>
+        </div>
+    </div>
+
+    <script src="/scripts/home.js"></script>
+
+</body>
+{% endblock %}
