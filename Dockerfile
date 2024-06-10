@@ -6,7 +6,7 @@ WORKDIR /app
 
 COPY /app ./app
 COPY /static ./static
-COPY /temp ./temp
+COPY /templates ./templates
 COPY /config ./config
 
 COPY requirements.txt .
