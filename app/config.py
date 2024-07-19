@@ -4,20 +4,27 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     pass
 
-import json
-import aiofiles
+import toml
 from pathlib import Path
 
 class Config:
     def __init__(self):
-        self.config_path = Path("./config/config.json")
-        self.lang_path = Path("./config/lang/")
+        self.file_path = Path("./config/config.toml")
     
-    async def get_config(self):
-        async with aiofiles.open(str(self.config_path), "r") as f:
-            file = await f.read()
-            await f.close()
-            
-            file = json.loads(file)
+    def get_config(self):
+        return toml.loads(self.file_path.read_text())
+    
+    @property
+    def redirects(self) -> dict:
+        data = self.get_config()
+        return data.get("redirects", {})
+    
+    @property
+    def files(self) -> dict:
+        data = self.get_config()
+        return data.get("files", {})
 
-        return file
+    @property
+    def projects(self) -> dict:
+        data = self.get_config()
+        return data.get("projects", {})

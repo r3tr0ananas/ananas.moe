@@ -30,21 +30,30 @@ async def github(request: Request):
         }
     )
 
+@redirect.get("/codeberg")
+async def codeberg(request: Request):
+    return templates.TemplateResponse(
+        "redirect.html", {
+            "request": request,
+            "title": "My Codeberg",
+            "description": "Check out my Codeberg",
+            "image_url": "https://codeberg.org/avatars/dddd4c528a54500a505d54ebeb41f317c779cc064f14c2c87fd28dbc8341a353",
+            "url": "https://codeberg.org/bananas"
+        }
+    )
+
 @redirect.get("/r/{redirect_id}")
 async def custom(request: Request, redirect_id: str):
-    live_config = await config.get_config()
-
-    for redirect in live_config["redirects"]:
-
-        if redirect["id"] == redirect_id:
+    for redirect in config.redirects:
+        if redirect.get("id") == redirect_id:
 
             return templates.TemplateResponse(
                 "redirect.html", {
                     "request": request,
-                    "title": redirect["title"],
-                    "description": redirect["description"],
-                    "image_url": redirect["image_url"],
-                    "url": redirect["url"]
+                    "title": redirect.get("title"),
+                    "description": redirect.get("description"),
+                    "image_url": redirect.get("image_url"),
+                    "url": redirect.get("url")
                 }
             )
 

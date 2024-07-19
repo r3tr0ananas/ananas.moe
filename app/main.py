@@ -36,4 +36,39 @@ async def index(request: Request):
         }
     )
 
+@app.get("/projects")
+async def index(request: Request):
+    context = ContextBuild(
+        request = request,
+        title = "Ananas - Projects",
+        description = "A list of my projects",
+        image_url = "https://avatars.githubusercontent.com/u/132799819"
+    )
+
+    return templates.TemplateResponse(
+        "projects.html", {
+            **context.data,
+            "projects": config.projects
+        }
+    )
+
+@app.get("/blog")
+async def index(request: Request):
+    context = ContextBuild(
+        request = request,
+        title = "Ananas - Soon",
+        description = "Coming Soon",
+        image_url = "https://avatars.githubusercontent.com/u/132799819"
+    )
+
+    return templates.TemplateResponse(
+        "blog.html", {
+            **context.data,
+        }
+    )
+
+@app.get("/blog/{id}")
+async def index(request: Request, id: str):
+    ...
+
 app.mount("/", StaticFiles(directory = "static"))

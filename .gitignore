@@ -4,6 +4,6 @@ output.css
 __pycache__
 node_modules
 package-lock.json
-config.json
+config.toml
 .ruff_cache
 config/files/*

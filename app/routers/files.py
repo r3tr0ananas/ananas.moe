@@ -18,15 +18,12 @@ files = APIRouter()
 
 @files.get("/file/{file_id}")
 async def file(request: Request, file_id: str):
-    live_config = await config.get_config()
+    for file in config.files:
+        if file.get("id") == file_id:
+            file_path = file.get("file")
 
-    js = live_config.get("files", {})
+            uploads = Path("./config", "files", file_path)
 
-    if file_id in js:
-        file_to_send = js[file_id]
-
-        uploads = Path("./config", "files", file_to_send)
-
-        return FileResponse(uploads, filename=file_to_send)
+            return FileResponse(uploads, filename=file_path)
 
     raise HTTPException(404)
