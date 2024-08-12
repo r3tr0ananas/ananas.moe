@@ -25,8 +25,6 @@ COPY /config ./config
 COPY --from=tailwind /app/static/output.css /app/static/output.css
 
 COPY requirements.txt .
-COPY package.json .
-COPY tailwind.config.js .
 COPY Makefile .
 
 RUN apt-get update && apt-get install -y make
