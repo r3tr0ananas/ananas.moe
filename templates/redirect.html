@@ -8,12 +8,14 @@
         <meta content="{{ description }}" property="og:description">
         <meta content="{{ image_url }}" property='og:image'>
 
-        <script> window.location.href = "{{ url }}"; </script>
+        <script>
+            window.location.href = "{{ url|safe }}";
+        </script>
     </head>
 
     <body>
         <noscript>
-            It seems you have Javascript disabled: <a href="{{ url }}">Click Here</a>
+            It seems you have Javascript disabled: <a href="{{ url|safe }}">Click Here</a>
         </noscript>
     </body>
 
