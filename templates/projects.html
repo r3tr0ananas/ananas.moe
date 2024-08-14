@@ -19,7 +19,7 @@
         {% for project in projects %}
             <a class="max-h-[80%]" href="{{ project.url }}">
                 <img class="rounded-lg hover:saturate-100 saturate-[20%] mobile:saturate-100 
-                tablet:saturate-100 transition duration-300" src="{{ project.preview }}" class="rounded-lg"></img>
+                tablet:saturate-100 transition duration-300 mx-auto" src="{{ project.preview }}"></img>
                 <p class="text-lg text-center pt-1 mt-1 font-bold">{{ project.title }}</p>
             </a>
         {% endfor %}
