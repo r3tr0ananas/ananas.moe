@@ -10,6 +10,7 @@ COPY /templates ./templates
 COPY /config ./config
 
 COPY requirements.txt .
+COPY tailwind.config.js .
 
 RUN pip install -r requirements.txt
 
