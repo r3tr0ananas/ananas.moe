@@ -3,16 +3,33 @@ from fastapi.requests import Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
+from fastapi_tailwind import tailwind
+from contextlib import asynccontextmanager
+
 from .ctx import ContextBuild
 from .routers import routers
 from .config import Config
 
 __all__ = ("app",)
 
+static_files = StaticFiles(directory = "static")
+
+@asynccontextmanager
+async def lifespan(_: FastAPI):
+    process = tailwind.compile(
+        static_files.directory + "/output.css",
+        tailwind_stylesheet_path = "./static/input.css"
+    )
+
+    yield
+
+    process.terminate()
+
 app = FastAPI(
     docs_url = None,
     redoc_url = None,
-    openapi_url = None
+    openapi_url = None,
+    lifespan = lifespan
 )
 
 for router in routers:
@@ -71,4 +88,4 @@ async def index(request: Request):
 async def index(request: Request, id: str):
     ...
 
-app.mount("/", StaticFiles(directory = "static"))
+app.mount("/", static_files)

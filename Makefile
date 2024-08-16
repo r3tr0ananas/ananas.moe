@@ -1,16 +1,7 @@
-build: deps npm tw
+build: deps
 
 deps:
 	pip install -r requirements.txt
-
-npm:
-	npm i
-
-tw:
-	npx tailwindcss -i ./static/input.css -o ./static/output.css
-
-tw-watch:
-	npx tailwindcss -i ./static/input.css -o ./static/output.css --watch
 
 docker:
 	python scripts/docker_build.py
