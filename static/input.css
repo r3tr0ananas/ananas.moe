@@ -6,7 +6,7 @@
 
 @layer base {
     body {
-        @apply bg-aGrey-800 font-montserrat tracking-wide text-white;
+        @apply bg-zinc-900 font-montserrat tracking-wide text-white;
     }
 
     h1, h2, h3, h4, h5, h6, p, li {

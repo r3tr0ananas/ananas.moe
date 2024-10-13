@@ -8,6 +8,7 @@ COPY /app ./app
 COPY /static ./static
 COPY /templates ./templates
 COPY /config ./config
+COPY /md ./md
 
 COPY requirements.txt .
 COPY tailwind.config.js .

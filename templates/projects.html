@@ -10,19 +10,22 @@
 
 {% block body %}
 <body class="mx-auto m-0">
-    <nav class="flex justify-center items-center gap-20">
-        <a class="text-slate-400" href="/">home</a>
+    <nav class="flex justify-center items-center gap-20 mt-5">
+        <a class="font-bold" href="/">/home</a>
     </nav>
     
-            
-    <div class="grid grid-cols-2 mobile:grid-cols-1 justify-center items-center gap-5 m-10">
-        {% for project in projects %}
-            <a class="max-h-[80%]" href="{{ project.url }}">
-                <img class="rounded-lg hover:saturate-100 saturate-[20%] mobile:saturate-100 
-                tablet:saturate-100 transition duration-300 mx-auto" src="{{ project.preview }}"></img>
-                <p class="text-lg text-center pt-1 mt-1 font-bold">{{ project.title }}</p>
-            </a>
-        {% endfor %}
+    <div id="projects">
+        <div class="grid grid-cols-2 mobile:grid-cols-1 justify-center items-center gap-5 mt-10 m-10">
+            {% for project in projects %}
+                <div>
+                    <a class="flex justify-center items-center" href="{{ project.url }}">
+                        <img class="rounded-lg opacity-40 hover:opacity-100 mobile:opacity-100
+                        sepia hover:sepia-0 mobile:sepia-0 transition duration-300 mx-auto" src="{{ project.preview }}"></img>
+                    </a>
+                    <h3 class="text-lg text-center pt-1 mt-1 font-bold">{{ project.title }}</h3>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 </body>
 {% endblock %}

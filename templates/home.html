@@ -4,60 +4,45 @@
 {{ super() }}
 
 <link rel="stylesheet" href="./output.css">
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 {% endblock %}
 
 
 {% block body %}
 <body class="mx-auto m-0">
-    <nav class="flex justify-center items-center gap-20">
-        <a class="text-slate-400" href="/projects">projects</a>
-        <a class="text-slate-400" href="/blog">blog</a>
+    <nav class="flex justify-center items-center gap-20 mt-5">
+        <a class="font-bold" href="/projects">/projects</a>
     </nav>
-    
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
 
-        <div class="grid grid-cols-2 mobile:grid-cols-1 justify-center items-center gap-5 text-center">
-            <img src="https://avatars.githubusercontent.com/u/132799819?v=4" class="rounded-full w-[80%] mx-auto">
-            <div id="text">
-                <p class="text-4xl mobile:text-3xl font-bold">Hey, i'm Ananas</p>
-                <sub class="text-2xl mobile:text-lg font-medium">I do
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+        <div class="grid grid-cols-1 justify-center items-center">
+            <div class="text-center">
+                <img src="./me.webp" class="mx-auto w-[300px] rounded-full">
+    
+                <div class="font-bold text-3xl pt-5 pb-3">
+                    Hey, I'm Ananas
+                </div>
+    
+                <div class="flex justify-center items-center flex-row gap-3 pb-2 text-center"> 
                     <a href="./github">
-                        open source stuff.
+                        <i class='bx bxl-github bx-md'></i>
                     </a>
-                </sub>
+            
+                    <a href="./codeberg">
+                        <i class='bx bx-code-alt bx-md'></i>
+                    </a>
+        
+                    <a href="mailto:ananas@ananas.moe">
+                        <i class='bx bx-mail-send bx-md'></i>
+                    </a>
+                </div>
+    
+                <div class="text-lg tracking-wide max-w-[50rem] mx-auto">
+                    {{ about_me|safe }}
+                </div>
             </div>
         </div>
     </div>
-
-    <div class="absolute bottom-4 right-4">
-        <div class="flex items-center flex-col gap-3 text-center">
-    
-            <span class="mobile:hidden">
-                <div class="[writing-mode:vertical-lr]">Follow me</div>
-    
-                <div class="h-12 w-px bg-white m-auto mb-4 mt-4"></div>
-            </span>
-    
-            <a href="./github">
-                <i data-lucide="github"></i>
-            </a>
-    
-            <a href="./codeberg">
-                <i data-lucide="mountain"></i>
-            </a>
-
-            <a href="https://youtube.com/@R3tr0AnanasDev">
-                <i data-lucide="youtube"></i>
-            </a>
-        </div>
-    </div>
-
-
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script>
-        lucide.createIcons();
-    </script>
-
 </body>
 {% endblock %}

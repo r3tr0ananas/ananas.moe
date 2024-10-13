@@ -6,6 +6,8 @@ from fastapi.templating import Jinja2Templates
 from fastapi_tailwind import tailwind
 from contextlib import asynccontextmanager
 
+from markdown import Markdown
+
 from .ctx import ContextBuild
 from .routers import routers
 from .config import Config
@@ -13,6 +15,7 @@ from .config import Config
 __all__ = ("app",)
 
 static_files = StaticFiles(directory = "static")
+markdown = Markdown()
 
 @asynccontextmanager
 async def lifespan(_: FastAPI):
@@ -47,14 +50,20 @@ async def index(request: Request):
         image_url = "https://avatars.githubusercontent.com/u/132799819"
     )
 
+
+    with open("./md/about_me.md") as file:
+        about_me = markdown.convert(file.read())
+
     return templates.TemplateResponse(
         "home.html", {
-            **context.data
+            **context.data,
+            "about_me": about_me,
+            "projects": config.projects
         }
     )
 
 @app.get("/projects")
-async def index(request: Request):
+async def projects(request: Request):
     context = ContextBuild(
         request = request,
         title = "Ananas - Projects",
@@ -70,7 +79,7 @@ async def index(request: Request):
     )
 
 @app.get("/blog")
-async def index(request: Request):
+async def blog(request: Request):
     context = ContextBuild(
         request = request,
         title = "Ananas - Soon",
@@ -85,7 +94,7 @@ async def index(request: Request):
     )
 
 @app.get("/blog/{id}")
-async def index(request: Request, id: str):
+async def blog_id(request: Request, id: str):
     ...
 
 app.mount("/", static_files)
