@@ -45,11 +45,10 @@ config = Config()
 async def index(request: Request):
     context = ContextBuild(
         request = request,
-        title = "Ananas - Home",
-        description = "Homepage",
-        image_url = "https://avatars.githubusercontent.com/u/132799819"
+        title = "Ananas • Home",
+        description = "My website :3",
+        image_url = "https://ananas.moe/me.webp"
     )
-
 
     with open("./md/about_me.md") as file:
         about_me = markdown.convert(file.read())
@@ -57,8 +56,7 @@ async def index(request: Request):
     return templates.TemplateResponse(
         "home.html", {
             **context.data,
-            "about_me": about_me,
-            "projects": config.projects
+            "about_me": about_me
         }
     )
 
@@ -66,9 +64,9 @@ async def index(request: Request):
 async def projects(request: Request):
     context = ContextBuild(
         request = request,
-        title = "Ananas - Projects",
-        description = "A list of my projects",
-        image_url = "https://avatars.githubusercontent.com/u/132799819"
+        title = "Ananas • Projects",
+        description = "A list of my projects :3",
+        image_url = "https://ananas.moe/me.webp"
     )
 
     return templates.TemplateResponse(
@@ -82,9 +80,9 @@ async def projects(request: Request):
 async def blog(request: Request):
     context = ContextBuild(
         request = request,
-        title = "Ananas - Soon",
+        title = "Ananas • Soon",
         description = "Coming Soon",
-        image_url = "https://avatars.githubusercontent.com/u/132799819"
+        image_url = "https://ananas.moe/me.webp"
     )
 
     return templates.TemplateResponse(
