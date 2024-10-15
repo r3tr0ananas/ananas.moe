@@ -10,37 +10,35 @@
 
 
 {% block body %}
-<body class="mx-auto m-0">
-    <nav class="flex justify-center items-center gap-20 mt-5">
+<body>
+    <nav class="flex justify-center items-center gap-20 p-10">
         <a class="font-bold" href="/projects">/projects</a>
     </nav>
 
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-        <div class="grid grid-cols-1 justify-center items-center">
-            <div class="text-center">
-                <img src="./me.webp" class="mx-auto w-[300px] rounded-full">
-    
-                <div class="font-bold text-3xl pt-5 pb-3">
-                    Hey, I'm Ananas
-                </div>
-    
-                <div class="flex justify-center items-center flex-row gap-3 pb-2 text-center"> 
-                    <a href="./github">
-                        <i class='bx bxl-github bx-md'></i>
-                    </a>
-            
-                    <a href="./codeberg">
-                        <i class='bx bx-code-alt bx-md'></i>
-                    </a>
+    <div class="grid items-center justify-center mt-4">
+        <div class="text-center">
+            <img src="./me.webp" class="mx-auto w-[300px] rounded-full">
+
+            <div class="font-bold text-3xl pt-5 pb-3">
+                Hey, I'm Ananas
+            </div>
+
+            <div class="flex justify-center items-center flex-row gap-3 pb-2 text-center"> 
+                <a href="./github">
+                    <i class='bx bxl-github bx-md'></i>
+                </a>
         
-                    <a href="mailto:ananas@ananas.moe">
-                        <i class='bx bx-mail-send bx-md'></i>
-                    </a>
-                </div>
+                <a href="./codeberg">
+                    <i class='bx bx-code-alt bx-md'></i>
+                </a>
     
-                <div class="text-lg tracking-wide max-w-[50rem] mx-auto">
-                    {{ about_me|safe }}
-                </div>
+                <a href="mailto:ananas@ananas.moe">
+                    <i class='bx bx-mail-send bx-md'></i>
+                </a>
+            </div>
+
+            <div class="text-xl mobile:text-base tablet:text-lg tracking-wide max-w-[50rem] mx-auto">
+                {{ about_me|safe }}
             </div>
         </div>
     </div>
