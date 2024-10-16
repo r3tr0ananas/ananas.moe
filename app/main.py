@@ -84,7 +84,7 @@ async def clouds(request: Request):
         request = request,
         title = "Ananas • Clouds",
         description = "A collection of cloud images :3",
-        image_url = random.choice(config.clouds) if config.clouds else "https://ananas.moe/me.webp"
+        image_url = random.choice(config.clouds)["image"] if config.clouds else "https://ananas.moe/me.webp"
     )
 
     return templates.TemplateResponse(
