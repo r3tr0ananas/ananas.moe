@@ -28,3 +28,8 @@ class Config:
     def projects(self) -> dict:
         data = self.get_config()
         return data.get("projects", {})
+
+    @property
+    def clouds(self) -> dict:
+        data = self.get_config()
+        return data.get("clouds", [])

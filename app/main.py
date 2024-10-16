@@ -12,6 +12,8 @@ from .ctx import ContextBuild
 from .routers import routers
 from .config import Config
 
+import random
+
 __all__ = ("app",)
 
 static_files = StaticFiles(directory = "static")
@@ -73,6 +75,22 @@ async def projects(request: Request):
         "projects.html", {
             **context.data,
             "projects": config.projects
+        }
+    )
+
+@app.get("/clouds")
+async def clouds(request: Request):
+    context = ContextBuild(
+        request = request,
+        title = "Ananas • Clouds",
+        description = "A collection of cloud images :3",
+        image_url = random.choice(config.clouds) if config.clouds else "https://ananas.moe/me.webp"
+    )
+
+    return templates.TemplateResponse(
+        "clouds.html", {
+            **context.data,
+            "clouds": config.clouds
         }
     )
 
