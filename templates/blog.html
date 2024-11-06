@@ -3,22 +3,31 @@
 {% block head %}
 {{ super() }}
 
-<link rel="stylesheet" href="./output.css">
-
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
 
 {% endblock %}
 
 
 {% block body %}
 <body class="mx-auto m-0">
-    <nav class="flex justify-center items-center gap-20">
-        <a class="text-slate-400" href="/">home</a>
+    <nav class="flex justify-center items-center gap-20 p-3">
+        <a class="font-bold" href="/">/home</a>
+        <a class="font-bold" href="/blog">/blog</a>
     </nav>
     
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-        <p class="font-bold text-5xl hover:text-red-600 duration-300">Coming Soon™</p>
+    <div class="px-[5%] mx-auto max-w-6xl">
+        <div class="!cursor-default pointer-events-none pt-5">
+            <figure class="overflow-hidden">
+                <img src="{{ post.thumbnail }}" class="mx-auto rounded-3xl">
+            </figure>
+
+            <h2 class="text-center p-2 font-bold text-3xl mobile:text-xl">{{ post.title }}</h2>
+            <h4 class="text-center p-2 text-gray-500">{{ post.date }}</h4>
+        </div>
+
+        <div id="post-content" class="p-4 mobile:pt-0 w-3/4 mobile:w-full">
+            {{ post.content|safe }}
+        </div>
     </div>
 </body>
 {% endblock %}

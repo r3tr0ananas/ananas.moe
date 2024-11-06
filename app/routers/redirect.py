@@ -11,14 +11,14 @@ from fastapi.exceptions import HTTPException
 
 from ..config import Config
 
-__all__ = ("redirect", )
+__all__ = ("router", )
 
 config = Config()
-redirect = APIRouter()
+router = APIRouter()
 
 templates = Jinja2Templates(directory = "./templates")
 
-@redirect.get("/github")
+@router.get("/github")
 async def github(request: Request):
     return templates.TemplateResponse(
         "redirect.html", {
@@ -30,19 +30,19 @@ async def github(request: Request):
         }
     )
 
-@redirect.get("/codeberg")
+@router.get("/codeberg")
 async def codeberg(request: Request):
     return templates.TemplateResponse(
         "redirect.html", {
             "request": request,
             "title": "My Codeberg",
             "description": "Check out my Codeberg",
-            "image_url": "https://codeberg.org/avatars/dddd4c528a54500a505d54ebeb41f317c779cc064f14c2c87fd28dbc8341a353",
+            "image_url": "https://ananas.moe/me.webp",
             "url": "https://codeberg.org/bananas"
         }
     )
 
-@redirect.get("/r/{redirect_id}")
+@router.get("/r/{redirect_id}")
 async def custom(request: Request, redirect_id: str):
     for redirect in config.redirects:
         if redirect.get("id") == redirect_id:

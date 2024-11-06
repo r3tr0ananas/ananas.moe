@@ -1,13 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./templates/**/*.html", "./md/**/*.md"],
+  content: ["./templates/**/*.html", "./md/**/*.md", "./blog/md/**/*.md"],
   theme: {
     extend: {
       fontFamily: {
         "playpen": ["Playpen Sans"],
       },
       colors: {
-        pineapple: {
+        ananas: {
           DEFAULT: "#ffcb00",
           100: "#ffde00",
           400: "#ffcb00",
@@ -18,6 +18,7 @@ module.exports = {
           100: "#606060",
           300: "#505050",
           500: "#404040",
+          600: "#333333",
           800: "#282828"
         },
         aDark: {

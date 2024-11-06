@@ -3,7 +3,6 @@
 {% block head %}
 {{ super() }}
 
-<link rel="stylesheet" href="./output.css">
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 {% endblock %}
@@ -14,6 +13,7 @@
     <nav class="flex justify-center items-center gap-20 p-10">
         <a class="font-bold" href="/projects">/projects</a>
         <a class="font-bold" href="/clouds">/clouds</a>
+        <a class="font-bold" href="/blog">/blog</a>
     </nav>
 
     <div class="grid items-center justify-center mt-4">
@@ -44,7 +44,7 @@
         </div>
     </div>
 
-    <div class="absolute bottom-0 right-0 p-2 text-zinc-800">
+    <div class="absolute mobile:hidden bottom-0 right-0 p-2 text-zinc-800">
         you're cute :3
     </div>
 </body>

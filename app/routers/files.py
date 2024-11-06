@@ -14,9 +14,9 @@ __all__ = ("file", )
 templates = Jinja2Templates(directory = "./temp")
 
 config = Config()
-files = APIRouter()
+router = APIRouter()
 
-@files.get("/file/{file_id}")
+@router.get("/file/{file_id}")
 async def file(request: Request, file_id: str):
     for file in config.files:
         if file.get("id") == file_id:

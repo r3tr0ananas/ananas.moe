@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.requests import Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+from fastapi.exceptions import HTTPException
 
 from fastapi_tailwind import tailwind
 from contextlib import asynccontextmanager
@@ -9,7 +10,7 @@ from contextlib import asynccontextmanager
 from markdown import Markdown
 
 from .ctx import ContextBuild
-from .routers import routers
+from .routers import blog, files, redirect
 from .config import Config
 
 import random
@@ -37,11 +38,29 @@ app = FastAPI(
     lifespan = lifespan
 )
 
-for router in routers:
-    app.include_router(router)
+for router in [blog, files, redirect]:
+    app.include_router(router.router)
 
 templates = Jinja2Templates(directory = "./templates")
 config = Config()
+
+@app.exception_handler(HTTPException)
+async def http_exception_handler(request, exc: HTTPException):
+    context = ContextBuild(
+        request = request,
+        title = "Ananas • Error",
+        description = exc.detail,
+    )
+
+    return templates.TemplateResponse(
+        name = "error.html", 
+        context = {
+            **context.data,
+            "status": exc.status_code,
+            "message": exc.detail
+        },
+        status_code = exc.status_code
+    )
 
 @app.get("/")
 async def index(request: Request):
@@ -93,24 +112,5 @@ async def clouds(request: Request):
             "clouds": config.clouds
         }
     )
-
-@app.get("/blog")
-async def blog(request: Request):
-    context = ContextBuild(
-        request = request,
-        title = "Ananas • Soon",
-        description = "Coming Soon",
-        image_url = "https://ananas.moe/me.webp"
-    )
-
-    return templates.TemplateResponse(
-        "blog.html", {
-            **context.data,
-        }
-    )
-
-@app.get("/blog/{id}")
-async def blog_id(request: Request, id: str):
-    ...
 
 app.mount("/", static_files)
