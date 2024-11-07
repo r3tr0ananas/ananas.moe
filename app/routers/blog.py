@@ -6,6 +6,7 @@ from fastapi.templating import Jinja2Templates
 from fastapi.exceptions import HTTPException
 
 from markdown import Markdown
+from datetime import datetime
 
 from ..blog import Blog
 from ..ctx import ContextBuild
@@ -30,7 +31,14 @@ async def blog_page(request: Request):
     return templates.TemplateResponse(
         "blogs.html", {
             **context.data,
-            "blogs": blog.blogs 
+            "blogs": [
+                {
+                    "date": datetime.fromisoformat(
+                        post["timestamp"]
+                    ).strftime("%b %d %Y"),
+                    **post
+                } for post in blog.blogs
+            ]
         }
     )
 
@@ -50,6 +58,10 @@ async def blog_id(request: Request, slug: str):
                     post.get("file")
                 )
             ).replace("./", f"./{post['slug']}/")
+
+            post["date"] = datetime.fromisoformat(
+                post["timestamp"]
+            ).strftime("%b %d %Y")
 
             return templates.TemplateResponse(
                 "blog.html", {

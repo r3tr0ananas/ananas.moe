@@ -23,4 +23,10 @@ class Blog:
     def blogs(self) -> list:
         blogs_toml = self.read_toml()
         
-        return blogs_toml.get("post", {})
+        posts = blogs_toml.get("post", [])
+
+        return sorted(
+                posts, 
+                key=lambda item: item["timestamp"], 
+                reverse=True
+            )

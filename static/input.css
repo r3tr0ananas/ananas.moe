@@ -14,73 +14,16 @@
     }
 
     footer {
-        @apply text-sm
+        @apply text-sm;
     }
 }
 
 @layer components {
-    /* copied from here https://github.com/THEGOLDENPRO/devgoldy.xyz/blob/main/web/input.css#L87 i'm too lazy :p*/
-    #post-content * {
-        @apply mb-4;
-    }
-
-    #post-content h1 {
-        @apply font-extrabold text-5xl mobile:text-2xl mt-6 !mb-1.5 underline;
-    }
-
-    #post-content h2 {
-        @apply font-bold text-4xl mobile:text-xl mt-5 !mb-0;
-    }
-
-    #post-content h3 {
-        @apply text-3xl mobile:text-xl underline mt-3 !mb-0;
-    }
-
-    #post-content h4 {
-        @apply text-2xl mobile:text-lg underline !mb-0;
-    }
-
-    #post-content h1, #post-content h2, #post-content h3, #post-content h4 {
-        @apply text-ananas-800;
-    }
-
-    #post-content h5, #post-content h6, #post-content p {
-        @apply text-xl mobile:text-base;
-    }
-
-    #post-content img {
-        @apply rounded-3xl my-3;
-    }
-
-    #post-content ul, #about-me-div ul {
-        @apply list-disc pl-8;
-    }
-
-    #post-content ol, #about-me-div ol {
-        @apply list-decimal pl-8;
-    }
-
-    #post-content ul *, #post-content ol * {
-        @apply mb-0;
-    }
-
-    #post-content hr {
-        @apply my-3;
-    }
-
-    #post-content blockquote {
-        @apply p-4 my-4 border-l-4 border-ananas-100;
-    }
-
-    #post-content blockquote p {
-        @apply !m-0;
-    }
-
-    #post-content p code {
-        @apply bg-black px-2 py-1 pb-0.5 text-base rounded-xl mobile:bg-aGrey-300;
-    }
-
-    #post-content pre code {
-        @apply rounded-xl;
+    #post-content {
+        @apply prose prose-headings:text-amber-400 
+        prose-a:text-ananas-100 transition
+        hover:prose-a:text-ananas-800 duration-700 
+        prose-img:rounded-xl prose-h1:underline text-white 
+        font-medium text-lg;
     }
 }

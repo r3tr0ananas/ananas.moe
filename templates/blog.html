@@ -10,16 +10,14 @@
 
 {% block body %}
 <body class="mx-auto m-0">
-    <nav class="flex justify-center items-center gap-20 p-3">
+    <nav class="flex justify-center items-center gap-20 p-10">
         <a class="font-bold" href="/">/home</a>
         <a class="font-bold" href="/blog">/blog</a>
     </nav>
     
     <div class="px-[5%] mx-auto max-w-6xl">
         <div class="!cursor-default pointer-events-none pt-5">
-            <figure class="overflow-hidden">
-                <img src="{{ post.thumbnail }}" class="mx-auto rounded-3xl">
-            </figure>
+            <img src="{{ post.thumbnail }}" class="mx-auto rounded-3xl">
 
             <h2 class="text-center p-2 font-bold text-3xl mobile:text-xl">{{ post.title }}</h2>
             <h4 class="text-center p-2 text-gray-500">{{ post.date }}</h4>

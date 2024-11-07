@@ -18,12 +18,30 @@
     </nav>
     
     <div id="blogs">
-        <div class="grid grid-cols-3 mobile:grid-cols-1 justify-center items-center gap-5 mt-10 m-10">
+        {% set latest = blogs[0] %}
+
+        <div class="flex justify-center items-center mx-auto text-center">
+            <a href="/blog/{{ latest.slug }}">
+                <article class="text-center rounded-xl 
+                opacity-70 hover:opacity-100 mobile:opacity-100 duration-300 transition">
+                    <img class="rounded-3xl" src="{{ latest.thumbnail }}" alt="{{ latest.title }}">
+                    <h3 class="text-lg font-bold">{{ latest.title }}</h3>
+                    <sub class="text-base text-gray-500">{{ latest.date }}</sub>
+                </article>
+            </a>
+        </div>
+
+        <h2 class="text-center font-bold text-lg pt-10">Posts</h2>
+        <div class="flex flex-row flex-wrap justify-center items-center gap-5 mt-5">
             {% for post in blogs %}
-                <a class="flex flex-col items-center" href="/blog/{{ post.slug }}">
-                    <img class="rounded-3xl" src="{{ post.thumbnail }}" alt="{{ post.title }}">
-                    <h3 class="text-lg font-bold">{{ post.title }}</h3>
-                    <sub class="text-base text-gray-500">{{ post.date }}</sub>
+                <a href="/blog/{{ post.slug }}">
+                    <article class="w-96 mobile:w-auto text-center p-5 border-2 
+                    border-aGrey-500 bg-aGrey-600 rounded-xl 
+                    opacity-70 hover:opacity-100 mobile:opacity-100 duration-300 transition">
+                        <img class="rounded-3xl" src="{{ post.thumbnail }}" alt="{{ post.title }}">
+                        <h3 class="text-lg font-bold">{{ post.title }}</h3>
+                        <sub class="text-base text-gray-500">{{ post.date }}</sub>
+                    </article>
                 </a>
             {% endfor %}
         </div>
