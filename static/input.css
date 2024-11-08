@@ -23,7 +23,7 @@
         @apply prose prose-headings:text-amber-400 
         prose-a:text-ananas-100 transition
         hover:prose-a:text-ananas-800 duration-700 
-        prose-img:rounded-xl prose-h1:underline text-white 
+        prose-blockquote:text-white prose-h1:underline text-white 
         font-medium text-lg;
     }
 }
