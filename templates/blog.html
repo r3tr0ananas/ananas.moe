@@ -1,25 +1,27 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block head %} {{ super() }}
 
-{% block head %}
-{{ super() }}
+<link
+    href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+    rel="stylesheet"
+/>
 
-<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
-{% endblock %}
-
-
-{% block body %}
+{% endblock %} {% block body %}
 <body class="mx-auto m-0">
     <nav class="flex justify-center items-center gap-20 p-10">
         <a class="font-bold" href="/">/home</a>
         <a class="font-bold" href="/blog">/blog</a>
     </nav>
-    
+
     <div class="px-[5%] mx-auto max-w-6xl">
         <div class="!cursor-default pointer-events-none pt-5">
-            <img src="{{ post.thumbnail }}" class="mx-auto rounded-3xl">
+            <img
+                src="{{ post.thumbnail }}"
+                class="mx-auto rounded-3xl w-max-60"
+            />
 
-            <h2 class="text-center p-2 font-bold text-3xl mobile:text-xl">{{ post.title }}</h2>
+            <h2 class="text-center p-2 font-bold text-3xl mobile:text-xl">
+                {{ post.title }}
+            </h2>
             <h4 class="text-center p-2 text-gray-500">{{ post.date }}</h4>
         </div>
 
@@ -27,5 +29,18 @@
             {{ post.content|safe }}
         </div>
     </div>
+
+    <script>
+        const headings = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
+
+        headings.forEach(function (heading) {
+            const id = heading.textContent
+                .trim()
+                .toLowerCase()
+                .replace(/\s+/g, "-")
+                .replace(/[^\w-]/g, "");
+            heading.id = id;
+        });
+    </script>
 </body>
 {% endblock %}

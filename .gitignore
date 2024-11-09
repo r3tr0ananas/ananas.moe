@@ -7,3 +7,5 @@ package-lock.json
 config.toml
 .ruff_cache
 config/files/*
+*.md
+blog.toml

@@ -1,8 +1,9 @@
 from fastapi import FastAPI
 from fastapi.requests import Request
+from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
-from fastapi.exceptions import HTTPException
+from starlette.exceptions import HTTPException
 
 from fastapi_tailwind import tailwind
 from contextlib import asynccontextmanager
@@ -53,7 +54,7 @@ async def http_exception_handler(request, exc: HTTPException):
     )
 
     return templates.TemplateResponse(
-        name = "error.html", 
+        name = "error.html",
         context = {
             **context.data,
             "status": exc.status_code,
@@ -77,7 +78,8 @@ async def index(request: Request):
     return templates.TemplateResponse(
         "home.html", {
             **context.data,
-            "about_me": about_me
+            "about_me": about_me,
+            "latest": blog.blog.blogs[0] if blog.blog.blogs else None
         }
     )
 
