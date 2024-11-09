@@ -78,8 +78,7 @@ async def index(request: Request):
     return templates.TemplateResponse(
         "home.html", {
             **context.data,
-            "about_me": about_me,
-            "latest": blog.blog.blogs[0] if blog.blog.blogs else None
+            "about_me": about_me
         }
     )
 
