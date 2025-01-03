@@ -16,12 +16,13 @@
         <div class="grid grid-cols-2 mobile:grid-cols-1 justify-center items-center gap-5 mt-10 m-10">
             {% for project in projects %}
                 <div>
-                    <a class="flex justify-center items-center" href="{{ project.url }}">
+                    <a class="flex flex-col justify-center items-center" href="{{ project.url }}">
                         <img class="rounded-lg opacity-40 hover:opacity-100 mobile:opacity-100
                         sepia hover:sepia-0 mobile:sepia-0 transition duration-300 mx-auto" 
                         src="{{ project.preview }}" alt="{{ project.title }}"></img>
+
+                        <h3 class="text-lg text-center pt-1 mt-1 font-bold">{{ project.title }}</h3>
                     </a>
-                    <h3 class="text-lg text-center pt-1 mt-1 font-bold">{{ project.title }}</h3>
                 </div>
             {% endfor %}
         </div>
