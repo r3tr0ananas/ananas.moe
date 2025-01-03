@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=B612+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,11 +6,16 @@
 
 @layer base {
     body {
-        @apply bg-aGrey-900 font-playpen tracking-wide text-white;
+        @apply bg-black font-b612 tracking-wide text-white;
     }
 
+    /* https://stackoverflow.com/questions/70533589/underline-on-hover-from-left-to-right */
     a {
-        @apply text-ananas-100 transition duration-700 hover:text-ananas-800
+        @apply text-ananas-100 transition duration-700 hover:text-ananas-800 
+        relative before:absolute before:w-full before:h-[2px] 
+        before:bottom-0 before:left-0 before:bg-ananas-800
+        before:hover:scale-x-100 before:scale-x-0 before:origin-top-left
+        before:transition before:ease-in-out before:duration-300
     }
 
     footer {
@@ -22,6 +27,7 @@
     #post-content {
         @apply prose prose-headings:text-amber-400 
         prose-a:text-ananas-100 transition
+        prose-a:no-underline
         hover:prose-a:text-ananas-800 duration-700 
         prose-blockquote:text-white prose-h1:underline text-white 
         font-medium text-lg;

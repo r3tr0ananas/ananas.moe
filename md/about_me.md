@@ -1,10 +1,6 @@
-I'm a developer from 🇩🇪 Germany.
+I'm a software developer from 🇩🇪 Germany.
 
-I love making stuff in
-<img class="inline -mt-1" width="24" alt="golang logo" src="./go.webp">
-or
-<img class="inline -mt-1" width="24" alt="python logo" src="./python.webp">.
-
-<br>
-
-Check out my projects [here](/projects)
+I code stuff in
+<img class="inline -mt-1" width="26" alt="python logo" src="./python.webp">
+<img class="inline -mt-1" width="26" alt="rust logo" src="./rust.webp">
+<img class="inline -mt-1" width="26" alt="go logo" src="./go.webp">.

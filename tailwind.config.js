@@ -7,7 +7,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        "playpen": ["Playpen Sans"],
+        "b612": ["B612 Mono"],
       },
       colors: {
         ananas: {

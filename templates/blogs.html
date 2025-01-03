@@ -11,14 +11,14 @@
 {% block body %}
 <body class="mx-auto m-0">
     <nav class="flex justify-center items-center gap-20 p-10">
-        <a class="font-bold" href="/">/home</a>
+        <a href="/">/home</a>
     </nav>
     
     <div id="blogs">
         {% set latest = blogs[0] %}
 
         <div class="flex justify-center items-center mx-auto text-center">
-            <a href="/blog/{{ latest.slug }}">
+            <a href="/blog/{{ latest.slug }}" class="pb-2">
                 <article class="text-center rounded-xl 
                 opacity-70 hover:opacity-100 mobile:opacity-100 duration-300 transition max-w-96">
                     <img class="rounded-3xl" src="{{ latest.thumbnail }}" alt="{{ latest.title }}">
@@ -31,7 +31,7 @@
         <h2 class="text-center font-bold text-lg pt-10">Posts</h2>
         <div class="flex flex-row flex-wrap justify-center items-center gap-5 mt-5">
             {% for post in blogs %}
-                <a href="/blog/{{ post.slug }}">
+                <a href="/blog/{{ post.slug }}" class="pb-2">
                     <article class="w-96 mobile:w-auto text-center p-5 border-2 
                     border-aGrey-500 bg-aGrey-600 rounded-xl 
                     opacity-70 hover:opacity-100 mobile:opacity-100 duration-300 transition">

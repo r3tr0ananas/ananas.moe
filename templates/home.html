@@ -1,57 +1,63 @@
 {% extends "base.html" %} {% block head %} {{ super() }}
 
-<link
-    href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-    rel="stylesheet"
-/>
+
+<link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+          
 
 {% endblock %} {% block body %}
-<body>
-    <nav class="flex justify-center items-center gap-20 p-10">
-        <a class="font-bold" href="/projects">/projects</a>
-        <a class="font-bold" href="/clouds">/clouds</a>
-        <a class="font-bold" href="/blog">/blog</a>
+<body class="select-none">
+    <nav class="absolute w-full flex justify-center items-center gap-14 pt-10">
+        <a href="/projects">/projects</a>
+        <a href="/clouds">/clouds</a>
+        <a href="/blog">/blog</a>
     </nav>
 
-    <div class="grid items-center justify-center mt-4">
-        <div class="text-center">
+    <div class="flex justify-center items-center h-screen flex-col sm:flex-row gap-10 xl:gap-52">
+        <div class="block sm:hidden text-center">
             <img
                 src="./me.webp"
-                class="mx-auto rounded-full"
+                class="rounded-lg"
                 alt="profile picture"
                 width="300"
             />
+        </div>
 
-            <div class="font-bold text-4xl pt-5 pb-3">Hey, I'm Ananas</div>
+        <div class="text-lg mobile:text-base tablet:text-lg max-w-[50rem] text-center">
+            <h1 class="text-2xl font-bold">Hi, I'm
+                <span class="underline decoration-ananas-100 decoration-[3px] underline-offset-4">Ananas</span>.
+            </h1>
 
-            <div
-                class="flex justify-center items-center flex-row gap-3 pb-2 text-center"
-            >
-                <a href="./github" aria-label="Link to my GitHub">
-                    <i class="bx bxl-github bx-md"></i>
-                </a>
-
-                <a href="./codeberg" aria-label="Link to my Codeberg">
-                    <i class="bx bx-code-alt bx-md"></i>
-                </a>
-
-                <a
-                    href="mailto:ananas@ananas.moe"
-                    aria-label="Link to mail me something"
-                >
-                    <i class="bx bx-mail-send bx-md"></i>
-                </a>
-            </div>
-
-            <div
-                class="text-xl mobile:text-base tablet:text-lg max-w-[50rem] mx-auto"
-            >
+            <span class="p-1">
                 {{ about_me|safe }}
+            </span>
+
+            <div
+                class="flex justify-center items-center flex-row gap-10"
+            >
+                <a href="./github" class="text-slate-500 font-extrabold" aria-label="Link to my GitHub">
+                    <i class="devicon-github-original hover:text-slate-500 text-slate-500 text-[34px]"></i>
+                    <h1>GitHub</h1>
+                </a>
+
+                <a href="./codeberg" class="text-blue-500 font-extrabold text-center" aria-label="Link to my Codeberg">
+                    <img src="https://design.codeberg.org/logo-kit/icon.svg" width="34" class="mx-auto pb-1">
+
+                    <h1>Codeberg</h1>
+                </a>
             </div>
+        </div>
+
+        <div class="hidden sm:block text-center">
+            <img
+                src="./me.webp"
+                class="rounded-lg"
+                alt="profile picture"
+                width="300"
+            />
         </div>
     </div>
 
-    <div class="absolute mobile:hidden bottom-0 right-0 p-2 text-zinc-800">
+    <div class="absolute mobile:hidden bottom-0 right-0 p-2 text-zinc-900">
         you're cute :3
     </div>
 </body>
